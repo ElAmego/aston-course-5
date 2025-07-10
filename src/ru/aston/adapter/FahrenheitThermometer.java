@@ -1,4 +1,14 @@
 package ru.aston.adapter;
 
-public class FahrenheitThermometer {
+final public class FahrenheitThermometer implements Thermometer {
+    private final double temperature;
+
+    public FahrenheitThermometer(final double temperature) {
+        this.temperature = temperature;
+    }
+
+    @Override
+    public double getTemperature() {
+        return temperature;
+    }
 }
