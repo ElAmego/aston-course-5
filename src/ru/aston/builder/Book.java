@@ -6,11 +6,15 @@ final public class Book {
     private final int year;
     private final int pages;
 
-    private Book(final Builder builder) {
-        this.name = builder.name;
-        this.author = builder.author;
-        this.year = builder.year;
-        this.pages = builder.pages;
+    private Book(final String name, final String author, final int year, final int pages) {
+        this.name = name;
+        this.author = author;
+        this.year = year;
+        this.pages = pages;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     @Override
@@ -18,30 +22,40 @@ final public class Book {
         return "Книга: " + name + "; Автор: " + author + "; Год: " + year + "; Страницы: " + pages;
     }
 
-    final public static class Builder {
-        private final String name;
+    public static final class Builder {
+        private String name;
         private String author;
+        private int year;
+        private int pages;
 
-        private int year = 0;
-        private int pages = 0;
-
-        public Builder(final String name, final String author) {
-            this.name = name;
-            this.author = author;
+        private Builder() {
         }
 
-        public Builder setYear(final int year) {
+        public Builder name(final String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder author(final String author) {
+            this.author = author;
+            return this;
+        }
+
+        public Builder year(final int year) {
             this.year = year;
             return this;
         }
 
-        public Builder setPages(final int pages) {
+        public Builder pages(final int pages) {
             this.pages = pages;
             return this;
         }
 
         public Book build() {
-            return new Book(this);
+            if (name == null || author == null) {
+                throw new IllegalStateException("Name and author are required");
+            }
+            return new Book(name, author, year, pages);
         }
     }
 }

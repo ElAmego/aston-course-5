@@ -19,7 +19,10 @@ public class ProxyDocument implements Document {
 
     @Override
     public String getPath() {
-        if (realDocument != null) return realDocument.getPath();
+        if (realDocument != null) {
+            return realDocument.getPath();
+        }
+
         return null;
     }
 }
