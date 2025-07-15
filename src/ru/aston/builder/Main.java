@@ -5,7 +5,7 @@ public class Main {
     public static final int BOOK_PAGES = 200;
 
     public static void main(String[] args) {
-        Book book = Book.builder().author("Толстой").name("Война и мир").pages(333).year(1850).build();
+        Book book = Book.builder().author("Толстой").name("Война и мир").pages(BOOK_PAGES).year(BOOK_YEAR).build();
         System.out.println(book);
     }
 }
