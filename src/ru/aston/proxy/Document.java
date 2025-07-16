@@ -1,4 +1,7 @@
 package ru.aston.proxy;
 
-public class Document {
+public interface Document {
+    void getRows();
+    void getColumns();
+    String getPath();
 }

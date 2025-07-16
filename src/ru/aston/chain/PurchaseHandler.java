@@ -1,4 +1,6 @@
 package ru.aston.chain;
 
-public interface PurchaseHandler {
+interface PurchaseHandler {
+    void setNext(PurchaseHandler handler);
+    void handleRequest(int amount);
 }
